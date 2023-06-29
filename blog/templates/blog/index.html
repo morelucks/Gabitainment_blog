@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} My blog{% endblock  %}
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/index.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/post.css' %}">
+{% endblock  %}
+{% block content  %}
+<div class="container">
+    <div class="main">
+        <section id="welcome">
+            {% for post in sposts %}
+            <a href ="{% url 'post-detail-page' post.slug%}">
+                <h1>NEWS</h1>
+            <main>            
+             <img src="{{post.image.url}}" alt="Gabriel s The author of this blog" /> 
+            </main>
+            <header>
+                <h2>{{post.excerpt}}</h2>
+            </header>
+            {% endfor %}
+        </a>
+        </section>
+        
+        <section  id="latest-posts">
+            <h1>FOLLOW
+                 <span class="update">U</span>pdates   
+            </h1>
+                <a href="#" class="fa fa-facebook"> </a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+           
+            <ul id="id2">
+                {% for post in twopost %}
+                {% include "blog/include/post.html" %}
+                {% comment %} <li>
+                    <article class="posts">
+                        <a href="{% url 'post-detail-page' post.slug%}">
+                            <img src="{{post.image.url}}"  alt="{{post.title}}" />
+                            <div class="post_content">
+                                <p>{{post.excerpt}}  </p>
+                            </div>
+                        </a>
+                
+                    </article>
+                </li>               {% endcomment %}
+              {% endfor %}
+            </ul> 
+        </section> 
+        <section id="about">
+            <h2>what I do</h2>
+            <p>I blog, I create, I design, an online advertiser and content creator, Negerian blogger
+            </p>
+            <p>
+                My goal is to keep on growing as a blogger and if i could help
+                 you do the same,I'd be very happy!
+            </p>
+        </section>
+        
+        <footer class="footer">
+            <h2>Gabitainment Community</h2>
+           <div>
+            <div class="links">
+                
+    
+                <a href="#" class="fa fa-facebook"> </a>
+    
+                <a href="#" class="fa fa-twitter"></a>
+        
+                <a href="#" class="fa fa-instagram"></a>
+                
+                <a href="#" class="fa fa-google"></a>  
+            </div>
+           </div>
+        </footer>
+       </div>
+    
+       <div class="aside">
+            <ul id="id2">
+                <h2>Recent Post</h2>
+
+                {% for post in posts %}
+                    {% include "blog/include/post.html" %}
+                {% endfor %}
+            </ul> 
+       </div>
+       
+</div>
+   
+{% endblock  %}

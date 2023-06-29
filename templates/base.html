@@ -1,0 +1,66 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock  %}</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% block  css_files%}{% endblock  %}
+</head>
+<body>    
+    <header>
+        <nav class="navbar">
+          <a class="nav-branding" href="{% url 'starting-page' %}">Gabitainment</a>
+
+          <ul class="nav-menu">
+              <li class="nav-item">
+                  <a href="{% url 'starting-page' %}" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'posts-page' %}" class="nav-link">All Updates</a>
+              </li>
+          
+          </ul>
+          <div class="nlinks">
+                
+    
+            <a href="#" class="fa fa-facebook"> </a>
+
+            <a href="#" class="fa fa-twitter"></a>
+    
+            <a href="#" class="fa fa-instagram"></a>
+            
+            <a href="#" class="fa fa-google"></a>  
+        </div>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+     
+          </div>
+        </nav>
+      </header>
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li>{{message}}</li> 
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}
+    
+    {% endblock  %}
+          {% comment %} <script src="https://cdn.tailwindcss.com"></script>  {% endcomment %}
+    
+          <script src="{% static 'scripts.js' %}"></script>
+
+</body>
+</html>

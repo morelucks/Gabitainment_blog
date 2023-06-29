@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/create-post.css' %}">
+
+    <div class="re">
+        <form method="POST" action=""  enctype="multipart/form-data">
+            {% csrf_token %}
+            {{postform.as_p}}
+            <input class="submit" type="submit" value="submit">
+        </form>
+    </div>
+{% endblock  %}

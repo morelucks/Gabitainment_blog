@@ -1,0 +1,183 @@
+.container{
+  display: flex;
+  width: 100%;
+  padding: 0 10%;
+
+}
+#welcome a h1{
+  text-decoration: none;
+
+  color: red;
+}
+
+.main{
+  flex: 8;
+  width: 70%;
+  /* border: 2px solid; */
+}
+.aside{
+  margin-left: 15px;
+  width: 30%;
+  flex: 4;
+}
+main img{
+  
+  /* border: 3px solid; */
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+header h2{
+  font-family: Arial, Helvetica, sans-serif ;
+  line-height: 30px;
+  margin: 0 auto;
+  background-color:white;
+  padding: 10px;
+  width: 70%;
+  color: rgb(4, 1, 1);
+  position: relative;
+  top: -40px;
+  box-shadow:1px 1px 6px  #073553;
+
+}
+.posts a {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: black;
+  transition: all 0.2s ease;
+  /* padding: 1rem; */
+  height: 30%;
+  
+  
+}
+.posts img{
+  width: 50%;
+  padding: 1rem;
+  height: 100%;
+  object-fit: cover;
+  
+}
+.post_content p{
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 30px;
+  font-size: 1.5rem;
+
+}
+
+#latest-posts h1{
+  text-align: center;
+}
+#id2 h2{
+  text-align: center;
+  color:#073553
+}
+
+  @media screen and (max-width:700px) {
+    #latest-posts ul {
+      display: block; 
+    }
+    .aside{
+      width: 100%;
+    }
+    #latest-posts h1{
+      display: block;
+    }
+    #latest-posts {
+      width: 100%;
+    }
+    .main{
+      width: 100%;
+    }
+    #id2{
+      padding-left: 0;
+      width: 100%;
+      margin-left: 0;
+    }
+   
+    .container{
+      display: block;
+    }
+  }
+  #latest-posts li {
+    flex: 1;
+  }
+  
+  #about {
+    text-align: center;
+    padding: 3rem;
+    background-color: #fac26f;
+    margin-top: 5rem;
+  }
+  
+  #about h2 {
+    font-size: 3rem;
+  }
+  
+  #about p {
+    font-size: 1.5rem;
+    color: #353535;
+  }
+  .footer{
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+.update{
+  font-size: 30px;
+
+  color:rgb(83, 12, 12);
+  animation-name: update;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  
+}
+@keyframes update{
+  0%{
+    color: rgb(9, 109, 122);
+    /* font-size: 25px; */
+    /* position: absolute; */
+
+  }
+  50%{
+    color:rgb(240, 217, 240);
+    /* font-size: 35px; */
+    /* position: absolute; */
+
+
+  }
+  80%{
+    color: #052236;
+  }
+}

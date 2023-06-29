@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{post.title}}{% endblock  %}
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/post-detail.css' %}">
+{% endblock  %}
+{% block content  %}
+
+<section id="summary">
+    <h2>{{post.title}}</h2>
+    <div>
+        {% for tag in post_tags %}
+            <span class="tag">{{tag.caption}}</span>
+        {% endfor %}
+
+    </div>
+    <article>
+        {% comment %} <img src="{{post.image.url}}" alt="{{post.title}}"> {% endcomment %}
+        <address>By <a href="mailto:luckykamshak@gmail.com"> {{post.Author}}</a></address>
+        <div>
+             On <time>{{post.date|date:"d m y"}}</time>
+        </div>
+    </article>
+</section>
+<divc class="main">
+
+    <section id="detail-img">
+        <img src="{{post.image.url}}" alt="{{post.title}}">
+
+    </section>
+
+    <main>
+    
+        {{post.content|linebreaks}}
+    </main>     
+</divc>
+<section id="comments">
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <h2>{{comment.user_name}}</h2>
+                <p>{{comment.text}}</p>
+                <a  style="background-color:red" href="{% url 'delete-comment' comment.id %}">Delete</a>
+
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+<div>
+    <section id="comment-form">
+        <h2> Your Comment</h2>
+        <form action="{% url 'post-detail-page' post.slug %}" method="POST">
+            {% csrf_token %}
+            {% for form_field in comment_form %}
+                <div class="form-control">
+                {{form_field.label_tag}}
+                {{form_field}}
+                {{form_field.errors}}
+                </div>
+            {% endfor %}
+            <button>Save Comment</button>
+        </form>
+</section>
+</div>
+<a  style="background-color:red" href="{% url 'update-post' post.id %}">Edit</a>
+<a  style="background-color:red" href="{% url 'delete-post' post.id %}">Delete</a>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"></svg>
+
+{% endblock %}
