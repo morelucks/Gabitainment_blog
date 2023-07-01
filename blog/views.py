@@ -116,7 +116,8 @@ class CreatePost(CreateView):
         savem.save()
      return HttpResponseRedirect(reverse("login"))
 
-def createPost(request):
+def createPost(request): 
+
     form=PostForm()
     if request.method=='POST':
         print(request.POST)
@@ -131,8 +132,8 @@ def createPost(request):
     return render(request, "blog/include/create-post.html", context)
 
 def updatePost(request, pk):
-    post=Post.objects.get(id=pk)
-    form=PostForm(instance=post)
+    post = Post.objects.get(id=pk)
+    form = PostForm(instance=post)
 
     if request.method=='POST':
         form=PostForm(request.POST, request.FILES, instance=post)
@@ -146,8 +147,8 @@ def updatePost(request, pk):
     }
     return render(request, "blog/include/create-post.html", context)
 def deletePost(request, pk):
-    post=Post.objects.get(id=pk)
-    if request.method=='POST':
+    post = Post.objects.get(id=pk)
+    if request.method == 'POST':
         post.delete()
         return HttpResponseRedirect(reverse("starting-page"))
 
@@ -164,12 +165,12 @@ class CreateAuthor(CreateView):
     template_name="blog/include/author-form.html"
 
 class DeleteAuthor(DeleteView):
-    model=Author
-    success_url ="/"
+    model = Author
+    success_url = "/"
 
-    template_name="blog/include/delete.html"
+    template_name = "blog/include/delete.html"
 
 class UpdateAuthor(UpdateView):
     model=Author
-    success_url="/"
-    late_name="blog/include/author-form.html"
+    success_url = "/"
+    late_name = "blog/include/author-form.html"
